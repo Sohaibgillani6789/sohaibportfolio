@@ -590,6 +590,11 @@ const transitionToHomepage = () => {
 window.addEventListener('wheel', onWheelDuringWebGL, { passive: false });
 
 // --- Touch Events (same self-removing pattern) ---
+// AbortController lets us cleanly remove all WebGL-phase listeners in one shot,
+// including the non-passive touchmove that blocks native scroll.
+const webglTouchAbort = new AbortController();
+const webglSignal = webglTouchAbort.signal;
+
 const onTouchStartDuringWebGL = (event) => {
     if (event.touches.length === 1) {
         touchStartY = event.touches[0].clientY;
@@ -597,15 +602,9 @@ const onTouchStartDuringWebGL = (event) => {
     }
 };
 
-let isWebGLPhase = true;
-
 const onTouchMoveDuringWebGL = (event) => {
-    if (!isWebGLPhase) return;
-
-    // Prevent default to stop mobile browser pull-to-refresh & native scroll
-    if (event.cancelable) {
-        event.preventDefault();
-    }
+    // Block native scroll during the WebGL camera phase
+    if (event.cancelable) event.preventDefault();
 
     if (!isTouching || event.touches.length !== 1) return;
 
@@ -614,7 +613,6 @@ const onTouchMoveDuringWebGL = (event) => {
 
     if (Math.abs(deltaY) > 40) {
         const now = Date.now();
-        // Debounce touch state changes to prevent skipping all states in one swipe
         if (now - lastScrollTime > 800) {
             lastScrollTime = now;
 
@@ -622,34 +620,24 @@ const onTouchMoveDuringWebGL = (event) => {
                 if (scrollState < MAX_SCROLL_STATE) {
                     scrollState++;
                 } else {
-                    isWebGLPhase = false; // Immediately release lock
-                    removeTouchListeners();
+                    // Abort ALL WebGL-phase listeners atomically before transitioning
+                    webglTouchAbort.abort();
                     transitionToHomepage();
                 }
             } else {
-                if (scrollState > 0) {
-                    scrollState--;
-                }
+                if (scrollState > 0) scrollState--;
             }
         }
-        // Update anchor so we only trigger again after another solid 40px movement
         touchStartY = touchEndY;
     }
 };
 
 const onTouchEndDuringWebGL = () => { isTouching = false; };
 
-const removeTouchListeners = () => {
-    isWebGLPhase = false;
-    window.removeEventListener('touchstart', onTouchStartDuringWebGL);
-    window.removeEventListener('touchmove', onTouchMoveDuringWebGL, { passive: false });
-    window.removeEventListener('touchend', onTouchEndDuringWebGL);
-};
-
-window.addEventListener('touchstart', onTouchStartDuringWebGL, { passive: true });
-// MUST be passive: false so we can event.preventDefault()!
-window.addEventListener('touchmove', onTouchMoveDuringWebGL, { passive: false });
-window.addEventListener('touchend', onTouchEndDuringWebGL, { passive: true });
+// All three listeners share the same signal — one abort() removes all of them
+window.addEventListener('touchstart', onTouchStartDuringWebGL, { passive: true, signal: webglSignal });
+window.addEventListener('touchmove',  onTouchMoveDuringWebGL,  { passive: false, signal: webglSignal });
+window.addEventListener('touchend',   onTouchEndDuringWebGL,   { passive: true,  signal: webglSignal });
 
 
 /**
