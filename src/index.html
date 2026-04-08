@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#040016">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+
+    <!-- Canonical Tag -->
+    <link rel="canonical" href="https://sohaib.life/">
+
+    <!-- Primary Meta Tags -->
+    <title>Sohaib Gillani | Web Developer, Software Engineer & 3D Creator</title>
+    <meta name="title" content="Sohaib Gillani | Web Developer, Software Engineer & 3D Creator">
+    <meta name="description"
+        content="Portfolio of Sohaib Gillani, an expert Web Developer and Software Engineer specializing in React, Three.js WebGL, and high-performance immersive web applications.">
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sohaib.life/">
+    <meta property="og:title" content="Sohaib Gillani | Web Developer & Software Engineer">
+    <meta property="og:description"
+        content="Portfolio of Sohaib Gillani, an expert Web Developer and Software Engineer specializing in React, Three.js, and modern digital experiences.">
+    <meta property="og:image" content="https://sohaib.life/images/myself.webp">
+
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sohaib.life/">
+    <meta property="twitter:title" content="Sohaib Gillani | Web Developer & Software Engineer">
+    <meta property="twitter:description"
+        content="Portfolio of Sohaib Gillani, an expert Web Developer and Software Engineer specializing in React, Three.js, and modern digital experiences.">
+    <meta property="twitter:image" content="https://sohaib.life/images/myself.webp">
+
+    <!-- JSON-LD Entity Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Sohaib Gillani",
+      "url": "https://sohaib.life",
+      "image": "https://sohaib.life/images/myself.webp",
+      "jobTitle": "Web Developer and Software Engineer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Freelance"
+      },
+      "alumniOf": "Knowledge Streams Academy",
+      "sameAs": [
+        "https://www.linkedin.com/in/sohaib-gillani-31b187276/",
+        "https://github.com/Sohaibgillani6789",
+        "https://www.instagram.com/websiteout0/"
+      ],
+      "knowsAbout": ["React", "Next.js", "Three.js", "WebGL", "Web Development", "Software Engineering", "UI/UX Design", "3D Content Creation"]
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/s.png">
+
+    <!-- DNS Prefetch & Preconnect for External Resources -->
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="./style.css" as="style">
+    <link rel="preload" href="/images/myself.webp" as="image" type="image/webp">
+
+    <!-- Stylesheets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./loader.css">
+
+    <!-- Inline Critical CSS (Above-the-Fold) -->
+    <style>
+        /* ============================================
+           CRITICAL RENDER PATH - INLINE STYLES
+           Only styles needed for initial paint
+           ============================================ */
+
+        /* Base Reset & Body */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #040016;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* ============================================
+           LOADER STYLES (Critical - Shows First)
+           ============================================ */
+        #loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #040016;
+        }
+
+        /* ============================================
+           HEADER STYLES (Above the Fold)
+           ============================================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background-color: rgba(4, 0, 22, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 100;
+            border-top: 2px solid #c084fc;
+            box-shadow: inset 0 10px 20px -5px rgba(192, 132, 252, 0.7);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.493);
+            will-change: transform;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-left a {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #e4c4fd;
+            text-decoration: none;
+        }
+
+        /* ============================================
+           CONTACT BUTTON - GLASSMORPHISM
+           ============================================ */
+        .contact-button {
+            color: #ffffff;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+
+            /* Glassmorphism Effect */
+            background: rgba(168, 85, 247, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
+                0 1px 3px rgba(255, 255, 255, 0.2) inset;
+        }
+
+        .contact-button:hover {
+            background: rgba(168, 85, 247, 0.25);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15),
+                0 1px 3px rgba(255, 255, 255, 0.3) inset;
+            transform: translateY(-1px);
+        }
+
+        /* ============================================
+           FOOTER STYLES (Defer Non-Critical)
+           ============================================ */
+        .footer {
+            background-color: #040016;
+            color: #a0a0a0;
+            padding: 1rem 5%;
+            border-top: 1px solid #2a2a4a;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .footer-left p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-right {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-right a {
+            color: #9c76f7;
+            transition: color 0.3s ease;
+        }
+
+        .footer-right a:hover {
+            color: #9928f5;
+        }
+
+        .footer-right svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* ============================================
+           FOOTER MORPH ICONS
+           ============================================ */
+        .footer-social-morph {
+            position: absolute;
+            top: 50%;
+            left: 25%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            z-index: 100;
+        }
+
+        .footer-social-morph .morph-icon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            opacity: 0;
+            transform-origin: center center;
+            filter: drop-shadow(0 0 8px rgba(192, 132, 252, 0.6));
+        }
+
+        /* ============================================
+           RESPONSIVE STYLES
+           ============================================ */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .header {
+                padding: 0.8rem 3%;
+            }
+
+            #footer-section {
+                background-size: cover !important;
+                background-position: center !important;
+                min-height: 40vh !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 0.4rem 3%;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .header-left a {
+                font-size: 1rem;
+            }
+
+            .header-right {
+                width: 100%;
+                justify-content: center;
+                gap: 8px;
+                display: flex;
+            }
+
+            .contact-button {
+                padding: 0.35rem 0.5rem;
+                font-size: 0.8rem;
+                flex: 1;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ============================================
+         LOADER (Displays immediately)
+         ============================================ -->
+    <div id="loader-wrapper">
+        <div class="loader-content">
+            <h1 class="loader-title" aria-label="Good things take time">
+                <span class="word">
+                    <span>G</span><span>o</span><span>o</span><span>d</span>
+                </span>
+                <span class="word">
+                    <span>t</span><span>h</span><span>i</span><span>n</span><span>g</span><span>s</span>
+                </span>
+                <span class="word">
+                    <span>t</span><span>a</span><span>k</span><span>e</span>
+                </span>
+                <span class="word">
+                    <span>t</span><span>i</span><span>m</span><span>e</span>
+                </span>
+            </h1>
+            <p class="loader-desktop-msg">Open in desktop for immersive experience</p>
+        </div>
+    </div>
+
+    <!-- ============================================
+         HEADER NAVIGATION (Fixed Position)
+         ============================================ -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="/" aria-label="Sohaib Portfolio Home">Sohaib Portfolio</a>
+            </div>
+            <nav class="header-right" role="navigation">
+                <a href="/work.html" class="contact-button">My Work</a>
+                <a href="#footer-section" class="contact-button">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============================================
+         WEBGL CANVAS (Background - Deferred)
+         ============================================ -->
+    <canvas class="webgl" aria-hidden="true"></canvas>
+
+    <!-- ============================================
+         SCROLL DOWN INDICATOR
+         ============================================ -->
+    <div class="scroll-indicator" aria-hidden="true">
+        <div class="arrow"></div>
+    </div>
+
+    <!-- ============================================
+         SEO HIDDEN ARCTICLE FOR AI CRAWLERS
+         ============================================ -->
+    <article aria-hidden="false"
+        style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;">
+        <h2>Hire an Expert Web Developer & React Next.js Specialist</h2>
+        <p>I am Sohaib Gillani, an expert Web Developer and Software Engineer operating globally. I specialize in
+            building high-performance web applications using React, Next.js, and creating rich, interactive 3D web
+            experiences using Three.js and WebGL. By combining solid front-end architecture with cutting-edge 3D graphic
+            optimization, I help brands and businesses deliver interactive, immersive digital products that rank,
+            perform, and convert on the modern web.</p>
+    </article>
+
+    <!-- ============================================
+         SECTION 1: HERO / HOME PAGE
+         ============================================ -->
+    <section class="content-page page-two" id="next-section">
+        <div id="menu-bg" style="background-color: #120868;"></div>
+
+        <div id="home-page" class="page" style="background-color: #040016;">
+            <div class="main-content-container">
+                <div class="spacer-div"></div>
+
+                <h1 class="main-title" aria-label="Sohaib Gillani, Expert Web Developer, React & 3D Software Engineer">
+                    <div class="reveal-hidetext" aria-hidden="true"><span class="gradient-text-web">WEB DEVELOPER</span>
+                    </div>
+                    <div class="reveal-hidetext" aria-hidden="true"><span class="ampersand">&</span></div>
+                    <div class="reveal-hidetext" aria-hidden="true"><span class="gradient-text-dev">ENGINEER</span>
+                    </div>
+                </h1>
+
+                <div class="tagline-container">
+                    <h2 class="tagline-text">
+                        A CREATIVE WEB DEVELOPER TURNING YOUR VISION <br>
+                        INTO IRRESISTIBLE NEXT.JS & 3D WEBGL<br>
+                        EXPERIENCES.
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 2: SHADER EXPERIENCES
+         ============================================ -->
+    <section class="page-three">
+        <canvas id="webgl-section-three" class="page-canvas" aria-hidden="true"></canvas>
+        <div class="shader-text-overlay">
+            <h2 class="shader-title">
+                <span class="shader-word" data-typewriter="Beautiful">Beautiful</span>
+                <span class="shader-word" data-typewriter="Shader">Shader</span>
+                <span class="shader-word" data-typewriter="Experiences">Experiences</span>
+            </h2>
+            <p class="shader-desc"
+                data-typewriter="I Create stunning visual experiences with advanced shader technology. Interactive lighting, smooth animations, and beautiful effects that respond to your every move.">
+                I Create stunning visual experiences with advanced shader technology. Interactive lighting, smooth
+                animations, and beautiful effects that respond to your every move.</p>
+            <div class="shader-cursor" aria-hidden="true">|</div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 3: ABOUT / SKILLS  (Award-Winning Redesign)
+         ============================================ -->
+    <section class="content-page page-four" id="about-section">
+
+        <!-- Main Split Layout -->
+        <div class="about-grid">
+            <!-- LEFT: Image with Curtain Reveal -->
+            <div class="about-image-wrap">
+                <div class="about-image-reveal"></div>
+                <img src="/images/myself.webp"
+                    alt="Sohaib Gillani - Expert Freelance Web Developer and Three.js Engineer" class="about-photo"
+                    loading="eager" width="500" height="600" decoding="async"
+                    onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22500%22%20height%3D%22600%22%20viewBox%3D%220%200%20500%20600%22%3E%3Crect%20fill%3D%22%23111%22%20width%3D%22500%22%20height%3D%22600%22%2F%3E%3Ctext%20fill%3D%22%23555%22%20font-family%3D%22sans-serif%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%20x%3D%22250%22%20y%3D%22300%22%3EProfile%3C%2Ftext%3E%3C%2Fsvg%3E'" />
+                <!-- Decorative accent line -->
+                <div class="about-image-accent"></div>
+            </div>
+
+            <!-- RIGHT: Text + Skills -->
+            <div class="about-text-wrap">
+                <!-- Label -->
+                <span class="about-label">— ABOUT ME</span>
+
+                <!-- Scramble Text Title -->
+                <h3 class="about-title" data-scramble="Hi! I'm Sohaib"></h3>
+
+                <!-- Description -->
+                <div class="about-desc">
+                    <p>I'm a passionate Web Developer, Software Engineer, and Freelance Creator with a love for
+                        turning bold ideas into powerful digital experiences.</p>
+                    <p>Whether you're looking for brand identity, web design, or immersive digital
+                        experiences — I bring the vision to life with precision and creativity.</p>
+                </div>
+
+                <!-- Animated Skill Bars -->
+                <div class="about-skills">
+                    <h4 class="skills-heading">Core Skills</h4>
+
+                    <div class="skill-bar" data-percent="95">
+                        <div class="skill-info">
+                            <span class="skill-name">Web Development</span>
+                            <span class="skill-percent">0%</span>
+                        </div>
+                        <div class="skill-track">
+                            <div class="skill-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-bar" data-percent="90">
+                        <div class="skill-info">
+                            <span class="skill-name">UI/UX Design</span>
+                            <span class="skill-percent">0%</span>
+                        </div>
+                        <div class="skill-track">
+                            <div class="skill-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-bar" data-percent="85">
+                        <div class="skill-info">
+                            <span class="skill-name">Three.js / WebGL</span>
+                            <span class="skill-percent">0%</span>
+                        </div>
+                        <div class="skill-track">
+                            <div class="skill-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-bar" data-percent="88">
+                        <div class="skill-info">
+                            <span class="skill-name">Software Engineering</span>
+                            <span class="skill-percent">0%</span>
+                        </div>
+                        <div class="skill-track">
+                            <div class="skill-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-bar" data-percent="80">
+                        <div class="skill-info">
+                            <span class="skill-name">3D Modeling / Blender</span>
+                            <span class="skill-percent">0%</span>
+                        </div>
+                        <div class="skill-track">
+                            <div class="skill-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-bar" data-percent="75">
+                        <div class="skill-info">
+                            <span class="skill-name"><a href="photography.html"
+                                    style="color:inherit;text-decoration:none;">Photography</a></span>
+                            <span class="skill-percent">0%</span>
+                        </div>
+                        <div class="skill-track">
+                            <div class="skill-fill"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 4: EXPERIENCE (Ultra-Creative V2)
+         ============================================ -->
+    <section class="content-page page-five" id="experience-section">
+
+        <!-- Decorative SVG Paths — using <path> for reliable getTotalLength() -->
+        <svg class="exp-deco exp-deco-1" width="200" height="200" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+            <path class="deco-path deco-morph"
+                d="M100,15 C130,15 170,80 185,170 C140,170 100,170 100,170 C100,170 60,170 15,170 C30,80 70,15 100,15"
+                data-morph="M100,15 C146,15 185,53 185,92 C185,131 146,170 100,170 C54,170 15,131 15,92 C15,53 54,15 100,15"
+                stroke="#a855f7" stroke-width="1.2" fill="none" />
+        </svg>
+        <svg class="exp-deco exp-deco-2" width="140" height="140" viewBox="0 0 140 140" fill="none" aria-hidden="true">
+            <path class="deco-path deco-morph"
+                d="M70,5 C70,5 135,70 135,70 C135,70 70,135 70,135 C70,135 5,70 5,70 C5,70 70,5 70,5"
+                data-morph="M70,5 C90,25 135,35 135,70 C135,105 90,115 70,135 C50,115 5,105 5,70 C5,35 50,25 70,5"
+                stroke="#867ef5" stroke-width="1.2" fill="none" />
+        </svg>
+        <svg class="exp-deco exp-deco-3" width="160" height="160" viewBox="0 0 160 160" fill="none" aria-hidden="true">
+            <path class="deco-path" d="M80,10 A70,70 0 1,1 79.99,10" stroke="#c084fc" stroke-width="0.8" fill="none" />
+            <path class="deco-path" d="M80,30 A50,50 0 1,1 79.99,30" stroke="#a855f7" stroke-width="0.6" fill="none" />
+        </svg>
+        <svg class="exp-deco exp-deco-4" width="100" height="100" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+            <path class="deco-path" d="M10,50 Q50,10 90,50 Q50,90 10,50" stroke="#6d28d9" stroke-width="0.8"
+                fill="none" />
+        </svg>
+
+        <!-- Header -->
+        <div class="exp-header">
+            <span class="exp-label">— JOURNEY</span>
+            <h2 class="exp-title" data-scramble="Experience"></h2>
+            <p class="exp-subtitle">I operate with a continuous learning mindset and treat every project as a strategic
+                problem-solving challenge. I actively study emerging technologies, experiment with new frameworks, and
+                refine my craft through deliberate practice. Creativity, for me, is not randomness — it is structured
+                innovation backed by research, iteration, and execution..</p>
+            <div class="exp-header-line"></div>
+        </div>
+
+        <!-- Zigzag Timeline -->
+        <div class="exp-timeline-wrap">
+
+            <!-- Central SVG Line -->
+            <svg class="exp-center-line" viewBox="0 0 1200 6" preserveAspectRatio="none" aria-hidden="true">
+                <path class="exp-main-path" d="M0,3 L1200,3" stroke="url(#expLineGrad)" stroke-width="2" fill="none" />
+                <defs>
+                    <linearGradient id="expLineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#a855f7" stop-opacity="0" />
+                        <stop offset="20%" stop-color="#a855f7" stop-opacity="1" />
+                        <stop offset="80%" stop-color="#c084fc" stop-opacity="1" />
+                        <stop offset="100%" stop-color="#867ef5" stop-opacity="0" />
+                    </linearGradient>
+                </defs>
+            </svg>
+
+            <!-- Zigzag Nodes: odd=above, even=below -->
+            <div class="exp-nodes">
+
+                <!-- Node 1 (ABOVE) -->
+                <div class="exp-node exp-node-above">
+                    <div class="exp-card">
+                        <span class="exp-watermark">23</span>
+                        <span class="exp-card-year">2023</span>
+                        <h4 class="exp-card-title" data-scramble="META Web Dev Cert."></h4>
+                        <p class="exp-card-desc">Completed Meta's professional certification — React, responsive design,
+                            modern frontend.</p>
+                        <div class="exp-card-line"></div>
+                    </div>
+                    <div class="exp-dot">
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                            <path class="dot-ring" d="M14,2 A12,12 0 1,1 13.99,2" stroke="#a855f7" stroke-width="2"
+                                fill="none" />
+                            <circle class="dot-center" cx="14" cy="14" r="4" fill="#a855f7" opacity="0" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Node 2 (BELOW) -->
+                <div class="exp-node exp-node-below">
+                    <div class="exp-dot">
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                            <path class="dot-ring" d="M14,2 A12,12 0 1,1 13.99,2" stroke="#a855f7" stroke-width="2"
+                                fill="none" />
+                            <circle class="dot-center" cx="14" cy="14" r="4" fill="#a855f7" opacity="0" />
+                        </svg>
+                    </div>
+                    <div class="exp-card">
+                        <span class="exp-watermark">24</span>
+                        <span class="exp-card-year">2024</span>
+                        <h4 class="exp-card-title" data-scramble="Python Program"></h4>
+                        <p class="exp-card-desc">Knowledge Streams Academy — Python, data structures, algorithms,
+                            backend architecture.</p>
+                        <div class="exp-card-line"></div>
+                    </div>
+                </div>
+
+                <!-- Node 3 (ABOVE) -->
+                <div class="exp-node exp-node-above">
+                    <div class="exp-card">
+                        <span class="exp-watermark">25</span>
+                        <span class="exp-card-year">2025</span>
+                        <h4 class="exp-card-title" data-scramble="React Dev Intern"></h4>
+                        <p class="exp-card-desc">Spyling Agent Agency — production React apps, state management,
+                            performance optimization.</p>
+                        <div class="exp-card-line"></div>
+                    </div>
+                    <div class="exp-dot">
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                            <path class="dot-ring" d="M14,2 A12,12 0 1,1 13.99,2" stroke="#a855f7" stroke-width="2"
+                                fill="none" />
+                            <circle class="dot-center" cx="14" cy="14" r="4" fill="#a855f7" opacity="0" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Node 4 (BELOW — Current) -->
+                <div class="exp-node exp-node-below exp-node-current">
+                    <div class="exp-dot exp-dot-now">
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                            <path class="dot-ring" d="M14,2 A12,12 0 1,1 13.99,2" stroke="#c084fc" stroke-width="2.5"
+                                fill="none" />
+                            <circle class="dot-center" cx="14" cy="14" r="4" fill="#c084fc" opacity="0" />
+                        </svg>
+                        <span class="exp-now-badge">NOW</span>
+                    </div>
+                    <div class="exp-card exp-card-active">
+                        <span class="exp-watermark">N</span>
+                        <span class="exp-card-year">PRESENT</span>
+                        <h4 class="exp-card-title" data-scramble="Three.js Journey"></h4>
+                        <p class="exp-card-desc">Currently mastering WebGL, GLSL shaders, and immersive 3D web
+                            experiences.</p>
+                        <div class="exp-card-line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5 migrated to work.html -->
+
+
+
+    <!-- ============================================
+         FOOTER (Below the Fold - Loaded Last)
+         ============================================ -->
+    <footer class="footer" id="footer-section"
+        style="position: relative; z-index: 10; background-image: url('/images/gogo.webp'); background-size: cover; background-position: center; min-height: 100vh; width: 100%; box-shadow: 0 -10px 20px rgba(209, 169, 248, 0.8), 0 -25px 50px rgba(200, 149, 252, 0.6), 0 -45px 30px rgba(198, 147, 250, 0.4); border-top: 2px solid rgba(192, 132, 252, 1);">
+
+        <div class="footer-social-morph" aria-hidden="false">
+            <a href="https://www.linkedin.com/in/sohaib-gillani-31b187276/" class="morph-icon" target="_blank" rel="noopener noreferrer" style="pointer-events: none;" aria-label="LinkedIn">
+                <img src="/images/linkedin.svg" alt="LinkedIn" style="width:100%;height:100%;object-fit:contain;">
+            </a>
+            <a href="https://www.instagram.com/websiteout0/" class="morph-icon" target="_blank" rel="noopener noreferrer" style="pointer-events: none;" aria-label="Instagram">
+                <img src="/images/instagram.svg" alt="Instagram" style="width:100%;height:100%;object-fit:contain;">
+            </a>
+            <a href="https://github.com/Sohaibgillani6789" class="morph-icon" target="_blank" rel="noopener noreferrer" style="pointer-events: none;" aria-label="GitHub">
+                <img src="/images/github.svg" alt="GitHub" style="width:100%;height:100%;object-fit:contain;">
+            </a>
+            <a href="https://vercel.com/sohaibs-projects-71ecb046" class="morph-icon" target="_blank" rel="noopener noreferrer" style="pointer-events: none;" aria-label="Vercel">
+                <img src="/images/vercel.svg" alt="Vercel" style="width:100%;height:100%;object-fit:contain;">
+            </a>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         JAVASCRIPT MODULE (Deferred Loading)
+         Type="module" automatically defers execution
+         ============================================ -->
+    <script type="module" src="./script.js"></script>
+</body>
+
+</html>

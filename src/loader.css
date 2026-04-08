@@ -1,0 +1,78 @@
+#loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #040016;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    font-family: 'Outfit', sans-serif;
+    overflow: hidden;
+}
+
+.loader-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.loader-title {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-weight: 800;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    line-height: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5em;
+    user-select: none;
+}
+
+.loader-title .word {
+    display: flex;
+}
+
+.loader-title span span {
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(to bottom, #a855f7, #6d28d9);
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-size: 100% 0%;
+    background-repeat: no-repeat;
+    transition: background-size 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* When a letter is active/filled, we'll toggle background-size via JS or CSS classes */
+.loader-title span span.filled {
+    background-size: 100% 100%;
+    -webkit-text-stroke: 1px transparent;
+}
+
+.loader-desktop-msg {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+@media (max-width: 768px) {
+    .loader-title {
+        gap: 0.3em;
+    }
+
+    .loader-desktop-msg {
+        letter-spacing: 0.2em;
+    }
+}

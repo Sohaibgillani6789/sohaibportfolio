@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#040016">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+
+    <!-- Canonical Tag -->
+    <link rel="canonical" href="https://sohaib.life/work.html">
+
+    <!-- Primary Meta Tags -->
+    <title>My Work | Sohaib Gillani - Selected Portfolio Projects</title>
+    <meta name="title" content="My Work | Sohaib Gillani - Selected Portfolio Projects">
+    <meta name="description"
+        content="Explore selected projects by Sohaib Gillani, featuring immersive 3D Three.js experiences, high-performance React applications, and full-stack solutions.">
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sohaib.life/work.html">
+    <meta property="og:title" content="My Work | Sohaib Gillani - Portfolio">
+    <meta property="og:description"
+        content="Explore selected projects by Sohaib Gillani, featuring immersive 3D Three.js experiences, React applications, and modern web solutions.">
+    <meta property="og:image" content="https://sohaib.life/images/myself.webp">
+
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sohaib.life/work.html">
+    <meta property="twitter:title" content="My Work | Sohaib Gillani - Portfolio">
+    <meta property="twitter:description"
+        content="Explore selected projects by Sohaib Gillani, featuring immersive 3D Three.js experiences, React applications, and modern web solutions.">
+    <meta property="twitter:image" content="https://sohaib.life/images/myself.webp">
+
+    <!-- JSON-LD CollectionPage Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Sohaib Gillani Portfolio Projects",
+      "url": "https://sohaib.life/work.html",
+      "description": "Selected portfolio projects by Sohaib Gillani.",
+      "about": {
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "CreativeWork",
+              "name": "Spying Agent",
+              "description": "An interactive WebGL experience built with Three.js and React, featuring real-time 3D rendering.",
+              "url": "https://sohaib.life/work.html#spying-agent"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "CreativeWork",
+              "name": "Morph",
+              "description": "Performance-optimized Next.js web application with seamless transitions and 3D UI elements.",
+              "url": "https://sohaib.life/work.html#morph"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "CreativeWork",
+              "name": "Car Dealer",
+              "description": "Automotive platform leveraging React and WebGL to view highly detailed 3D vehicles interactively.",
+              "url": "https://sohaib.life/work.html#car-dealer"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+              "@type": "CreativeWork",
+              "name": "Ghibli Studio",
+              "description": "Immersive 3D scene inspired by Studio Ghibli, engineered using custom Three.js shaders and GSAP.",
+              "url": "https://sohaib.life/work.html#ghibli"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "item": {
+              "@type": "CreativeWork",
+              "name": "3D Earth",
+              "description": "An interactive volumetric data visualization of the Earth generated purely in WebGL and shaders.",
+              "url": "https://sohaib.life/work.html#earth"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "item": {
+              "@type": "CreativeWork",
+              "name": "3js Prototype",
+              "description": "A fundamental exploration of WebGL optimization techniques handling large-scale rendering in modern browsers.",
+              "url": "https://sohaib.life/work.html#prototype"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/s.png">
+
+    <!-- DNS Prefetch & Preconnect for External Resources -->
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="./style.css" as="style">
+    <link rel="preload" href="/images/wew.jpg" as="image" type="image/jpeg">
+
+    <!-- Stylesheets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./loader.css">
+
+    <!-- Inline Critical CSS (Above-the-Fold) -->
+    <style>
+        /* ============================================
+           CRITICAL RENDER PATH - INLINE STYLES
+           Only styles needed for initial paint
+           ============================================ */
+
+        /* Base Reset & Body */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #040016;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+
+
+        /* ============================================
+           HEADER STYLES (Above the Fold)
+           ============================================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background-color: rgba(4, 0, 22, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 100;
+            border-top: 2px solid #c084fc;
+            box-shadow: 0 -15px 30px rgba(192, 132, 252, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.493);
+            will-change: transform;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-left a {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #e4c4fd;
+            text-decoration: none;
+        }
+
+        /* ============================================
+           CONTACT BUTTON - GLASSMORPHISM
+           ============================================ */
+        .contact-button {
+            color: #ffffff;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+
+            /* Glassmorphism Effect */
+            background: rgba(168, 85, 247, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
+                0 1px 3px rgba(255, 255, 255, 0.2) inset;
+        }
+
+        .contact-button:hover {
+            background: rgba(168, 85, 247, 0.25);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15),
+                0 1px 3px rgba(255, 255, 255, 0.3) inset;
+            transform: translateY(-1px);
+        }
+
+        /* ============================================
+           FOOTER STYLES (Defer Non-Critical)
+           ============================================ */
+        .footer {
+            background-color: #040016;
+            color: #a0a0a0;
+            padding: 1rem 5%;
+            border-top: 1px solid #2a2a4a;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .footer-left p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-right {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-right a {
+            color: #9c76f7;
+            transition: color 0.3s ease;
+        }
+
+        .footer-right a:hover {
+            color: #9928f5;
+        }
+
+        .footer-right svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* ============================================
+           RESPONSIVE STYLES
+           ============================================ */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .header {
+                padding: 0.8rem 3%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 0.4rem 3%;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .header-left a {
+                font-size: 1rem;
+            }
+
+            .header-right {
+                width: 100%;
+                justify-content: center;
+                gap: 8px;
+                display: flex;
+            }
+
+            .contact-button {
+                padding: 0.35rem 0.5rem;
+                font-size: 0.8rem;
+                flex: 1;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ============================================
+         LOADER (Displays immediately, slides up when assets load)
+         ============================================ -->
+    <div id="loader-wrapper"
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10000; display: flex; justify-content: center; align-items: center; background-color: #040016; transition: transform 0.8s cubic-bezier(0.76, 0, 0.24, 1);">
+        <div
+            style="width: 40px; height: 40px; border: 4px solid rgba(192, 132, 252, 0.2); border-top: 4px solid #c084fc; border-radius: 50%; animation: spin 1s linear infinite;">
+        </div>
+    </div>
+    <style>
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+    <!-- ============================================
+         HEADER NAVIGATION (Fixed Position)
+         ============================================ -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="/" aria-label="Sohaib Portfolio Home">Sohaib Portfolio</a>
+            </div>
+            <nav class="header-right" role="navigation">
+                <a href="/work.html" class="contact-button">My Work</a>
+                <a href="#footer-section" class="contact-button">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- No WebGL canvas on this page -->
+
+    <!-- ============================================
+         SECTION 5: PORTFOLIO / MY WORK (Award-Winning Glassmorphic)
+         ============================================ -->
+    <section class="work-section" id="work-section">
+
+        <!-- Floating Ambient Orbs (Parallax Background) -->
+        <div class="work-orb work-orb-1" aria-hidden="true"></div>
+        <div class="work-orb work-orb-2" aria-hidden="true"></div>
+        <div class="work-orb work-orb-3" aria-hidden="true"></div>
+
+        <!-- Section Header -->
+        <div class="work-header">
+            <span class="work-label">— PORTFOLIO</span>
+            <h2 class="work-title" aria-label="My Work: Selected Portfolio Projects" data-scramble="My Work">My Work
+            </h2>
+            <p class="work-subtitle">Crafted with precision. Each project is a story of pushing boundaries — from
+                immersive 3D worlds to production-grade web applications.</p>
+            <div class="work-header-line"></div>
+        </div>
+
+        <!-- Project Cards Grid -->
+        <div class="work-grid">
+
+            <!-- Project 1: Spying Agent -->
+            <article class="work-card" id="spying-agent">
+                <div class="card-glass">
+                    <div class="card-droplets"></div>
+                    <div class="card-image-wrap">
+                        <div class="card-image-reveal"></div>
+                        <div class="card-image" style="background-image: url('/images/spying.webp');" role="img"
+                            aria-label="Spying Agent project screenshot"></div>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-number">01</span>
+                        <h3 class="card-title">Spying Agent</h3>
+                        <span class="card-role">Lead Frontend Developer | React</span>
+                        <p class="card-desc">An interactive experience built with React. Engineered to showcase on the
+                            web.</p>
+                        <div class="card-tags">
+                            <span class="card-tag">React</span>
+                            <span class="card-tag">API</span>
+                            <span class="card-tag">UI/UX</span>
+                        </div>
+                        <a href="https://spyingagent.com/" target="_blank" rel="noopener noreferrer" class="card-link">
+                            <span>View Project</span>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M3 8.5h8.5M8 5l3.5 3.5L8 12" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="card-reflection"></div>
+                </div>
+            </article>
+
+            <!-- Project 2: Morph -->
+            <article class="work-card" id="morph">
+                <div class="card-glass">
+                    <div class="card-droplets"></div>
+                    <div class="card-image-wrap">
+                        <div class="card-image-reveal"></div>
+                        <div class="card-image" style="background-image: url('/images/morph.webp');" role="img"
+                            aria-label="Morph particles WebGL animation project"></div>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-number">02</span>
+                        <h3 class="card-title">Morph</h3>
+                        <span class="card-role">Creative 3D Developer | WebGL</span>
+                        <p class="card-desc">Performance-optimized robust animation project morphing 50,000 particles
+                            into an SVG logo in real-time, relying on complex Three.js shaders offloaded to the GPU to
+                            maintain high frame rates.</p>
+                        <div class="card-tags">
+                            <span class="card-tag">Three.js</span>
+                            <span class="card-tag">WebGL</span>
+                            <span class="card-tag">Next.js</span>
+                        </div>
+                        <a href="https://particles-peach-one.vercel.app/" target="_blank" rel="noopener noreferrer"
+                            class="card-link">
+                            <span>View Project</span>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M3 8.5h8.5M8 5l3.5 3.5L8 12" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="card-reflection"></div>
+                </div>
+            </article>
+
+            <!-- Project 3: Car Dealer -->
+            <article class="work-card" id="car-dealer">
+                <div class="card-glass">
+                    <div class="card-droplets"></div>
+                    <div class="card-image-wrap">
+                        <div class="card-image-reveal"></div>
+                        <div class="card-image" style="background-image: url('/images/car.webp');" role="img"
+                            aria-label="Car Dealer 3D and React web platform"></div>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-number">03</span>
+                        <h3 class="card-title">Car Dealer</h3>
+                        <span class="card-role">Front-End Architecture & Design</span>
+                        <p class="card-desc">An automotive e-commerce platform incorporating cinematic animations and
+                            fluid page transitions built entirely on Next.js, Framer Motion, and Tailwind CSS.</p>
+                        <div class="card-tags">
+                            <span class="card-tag">React</span>
+                            <span class="card-tag">Next.js</span>
+                            <span class="card-tag">Tailwind</span>
+                        </div>
+                        <a href="https://example.com/car-dealer" target="_blank" rel="noopener noreferrer"
+                            class="card-link">
+                            <span>View Project</span>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M3 8.5h8.5M8 5l3.5 3.5L8 12" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="card-reflection"></div>
+                </div>
+            </article>
+
+            <!-- Project 4: Ghibli Studio -->
+            <article class="work-card" id="ghibli">
+                <div class="card-glass">
+                    <div class="card-droplets"></div>
+                    <div class="card-image-wrap">
+                        <div class="card-image-reveal"></div>
+                        <div class="card-image" style="background-image: url('/images/ghibli.webp');" role="img"
+                            aria-label="Studio Ghibli 3D custom shader web experience"></div>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-number">04</span>
+                        <h3 class="card-title">Ghibli Studio</h3>
+                        <span class="card-role">3D Software Engineer</span>
+                        <p class="card-desc">An immersive 3D scene explicitly inspired by Studio Ghibli, engineered
+                            using custom Three.js GLSL shaders and GSAP to deliver optimal WebGL performance across
+                            devices.</p>
+                        <div class="card-tags">
+                            <span class="card-tag">Three.js</span>
+                            <span class="card-tag">GLSL</span>
+                            <span class="card-tag">WebGL</span>
+                        </div>
+                        <a href="https://studioghiblii.vercel.app/" target="_blank" rel="noopener noreferrer"
+                            class="card-link">
+                            <span>View Project</span>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M3 8.5h8.5M8 5l3.5 3.5L8 12" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="card-reflection"></div>
+                </div>
+            </article>
+
+            <!-- Project 5: 3D Earth -->
+            <article class="work-card" id="earth">
+                <div class="card-glass">
+                    <div class="card-droplets"></div>
+                    <div class="card-image-wrap">
+                        <div class="card-image-reveal"></div>
+                        <div class="card-image" style="background-image: url('/images/earth.webp');" role="img"
+                            aria-label="3D Earth custom volumetric shader mapping"></div>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-number">05</span>
+                        <h3 class="card-title">3D Earth</h3>
+                        <span class="card-role">WebGL Engineer | Data Visualization</span>
+                        <p class="card-desc">An interactive volumetric data visualization of the Earth generated purely
+                            using custom WebGL shaders, featuring complex ray-marching logic for realistic atmosphere
+                            and cloud formations.</p>
+                        <div class="card-tags">
+                            <span class="card-tag">WebGL</span>
+                            <span class="card-tag">Shaders</span>
+                            <span class="card-tag">3D Math</span>
+                        </div>
+                        <a href="https://earth-eight-delta.vercel.app/" target="_blank" rel="noopener noreferrer"
+                            class="card-link">
+                            <span>View Project</span>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M3 8.5h8.5M8 5l3.5 3.5L8 12" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="card-reflection"></div>
+                </div>
+            </article>
+
+            <!-- Project 6: 3js Prototype -->
+            <article class="work-card" id="prototype">
+                <div class="card-glass">
+                    <div class="card-droplets"></div>
+                    <div class="card-image-wrap">
+                        <div class="card-image-reveal"></div>
+                        <div class="card-image" style="background-image: url('/images/malahi.webp');" role="img"
+                            aria-label="3js Prototype interactive 3D environment layout"></div>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-number">06</span>
+                        <h3 class="card-title">malahi </h3>
+                        <span class="card-role">Front-End Developer</span>
+                        <p class="card-desc">An interactive 3D landing page for an urban entertainment company .</p>
+                        <div class="card-tags">
+                            <span class="card-tag">Three.js</span>
+                            <span class="card-tag">Optimization</span>
+                            <span class="card-tag">Gsap </span>
+                        </div>
+                        <a href="https://malahi-gamma.vercel.app/" target="_blank" rel="noopener noreferrer"
+                            class="card-link">
+                            <span>View Project</span>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M3 8.5h8.5M8 5l3.5 3.5L8 12" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="card-reflection"></div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER (Below the Fold - Loaded Last)
+         ============================================ -->
+    <footer class="footer" id="footer-section">
+        <div class="footer-container">
+            <!-- Copyright -->
+            <div class="footer-left">
+                <p>&copy; 2025 Sohaib Portfolio</p>
+            </div>
+
+            <!-- Social Media Links -->
+            <nav class="footer-right" aria-label="Social media links">
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/websiteout0/" target="_blank" rel="noopener noreferrer"
+                    aria-label="Follow me on Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+
+                <!-- GitHub -->
+                <a href="https://github.com/Sohaibgillani6789" target="_blank" rel="noopener noreferrer"
+                    aria-label="View my GitHub profile">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                        </path>
+                    </svg>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/sohaib-gillani-31b187276/" target="_blank"
+                    rel="noopener noreferrer" aria-label="Connect with me on LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+
+                <!-- Vercel -->
+                <a href="https://vercel.com/sohaibs-projects-71ecb046" target="_blank"
+                    rel="noopener noreferrer" aria-label="Check out my Vercel projects">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M24 22.525H0l12-21.05 12 21.05z"></path>
+                    </svg>
+                </a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         JAVASCRIPT MODULE (Deferred Loading)
+         Type="module" automatically defers execution
+         ============================================ -->
+    <script type="module" src="./work.js"></script>
+</body>
+
+</html>
