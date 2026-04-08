@@ -600,14 +600,10 @@ const onTouchStartDuringWebGL = (event) => {
 const onTouchMoveDuringWebGL = (event) => {
     if (!isTouching || event.touches.length !== 1) return;
 
-    const now = Date.now();
-    if (now - lastScrollTime < 800) return;
-
     const touchEndY = event.touches[0].clientY;
     const deltaY = touchStartY - touchEndY;
 
-    if (Math.abs(deltaY) > 50) {
-        lastScrollTime = now;
+    if (Math.abs(deltaY) > 40) {
         if (deltaY > 0) {
             if (scrollState < MAX_SCROLL_STATE) {
                 scrollState++;

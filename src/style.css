@@ -1,4 +1,4 @@
-﻿/* --- Lenis Smooth Scroll --- */
+/* --- Lenis Smooth Scroll --- */
 html.lenis,
 html.lenis body {
   height: auto;
@@ -29,7 +29,7 @@ html,
 body {
   width: 100%;
   scrollbar-width: none;
-  overflow-x: hidden;
+  overflow-x: clip;
   overscroll-behavior: none; /* Prevents scroll elasticity bounce which causes jitter in Lenis */
   background-color: #040016;
   font-family: sans-serif;
