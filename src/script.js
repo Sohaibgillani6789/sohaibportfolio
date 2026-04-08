@@ -598,24 +598,36 @@ const onTouchStartDuringWebGL = (event) => {
 };
 
 const onTouchMoveDuringWebGL = (event) => {
+    // Prevent default to stop mobile browser pull-to-refresh & native scroll
+    if (event.cancelable) {
+        event.preventDefault();
+    }
+
     if (!isTouching || event.touches.length !== 1) return;
 
     const touchEndY = event.touches[0].clientY;
     const deltaY = touchStartY - touchEndY;
 
     if (Math.abs(deltaY) > 40) {
-        if (deltaY > 0) {
-            if (scrollState < MAX_SCROLL_STATE) {
-                scrollState++;
+        const now = Date.now();
+        // Debounce touch state changes to prevent skipping all states in one swipe
+        if (now - lastScrollTime > 800) {
+            lastScrollTime = now;
+
+            if (deltaY > 0) {
+                if (scrollState < MAX_SCROLL_STATE) {
+                    scrollState++;
+                } else {
+                    removeTouchListeners();
+                    transitionToHomepage();
+                }
             } else {
-                removeTouchListeners();
-                transitionToHomepage();
-            }
-        } else {
-            if (scrollState > 0) {
-                scrollState--;
+                if (scrollState > 0) {
+                    scrollState--;
+                }
             }
         }
+        // Update anchor so we only trigger again after another solid 40px movement
         touchStartY = touchEndY;
     }
 };
@@ -629,7 +641,8 @@ const removeTouchListeners = () => {
 };
 
 window.addEventListener('touchstart', onTouchStartDuringWebGL, { passive: true });
-window.addEventListener('touchmove', onTouchMoveDuringWebGL, { passive: true });
+// MUST be passive: false so we can event.preventDefault()!
+window.addEventListener('touchmove', onTouchMoveDuringWebGL, { passive: false });
 window.addEventListener('touchend', onTouchEndDuringWebGL, { passive: true });
 
 
