@@ -597,7 +597,11 @@ const onTouchStartDuringWebGL = (event) => {
     }
 };
 
+let isWebGLPhase = true;
+
 const onTouchMoveDuringWebGL = (event) => {
+    if (!isWebGLPhase) return;
+
     // Prevent default to stop mobile browser pull-to-refresh & native scroll
     if (event.cancelable) {
         event.preventDefault();
@@ -618,6 +622,7 @@ const onTouchMoveDuringWebGL = (event) => {
                 if (scrollState < MAX_SCROLL_STATE) {
                     scrollState++;
                 } else {
+                    isWebGLPhase = false; // Immediately release lock
                     removeTouchListeners();
                     transitionToHomepage();
                 }
@@ -635,8 +640,9 @@ const onTouchMoveDuringWebGL = (event) => {
 const onTouchEndDuringWebGL = () => { isTouching = false; };
 
 const removeTouchListeners = () => {
+    isWebGLPhase = false;
     window.removeEventListener('touchstart', onTouchStartDuringWebGL);
-    window.removeEventListener('touchmove', onTouchMoveDuringWebGL);
+    window.removeEventListener('touchmove', onTouchMoveDuringWebGL, { passive: false });
     window.removeEventListener('touchend', onTouchEndDuringWebGL);
 };
 
