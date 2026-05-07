@@ -15,22 +15,36 @@ inject();
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, TextPlugin);
 
-// --- Lenis Smooth Scroll ---
+// --- Mobile Detection ---
+// Lenis smooth-scroll is designed for desktop mouse-wheel/trackpad.
+// On mobile, Lenis intercepts native touch events and fights the browser's
+// hardware-accelerated compositor — causing scroll to freeze or feel laggy.
+// Native mobile scroll is already momentum-smooth; we don't need Lenis there.
+const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) ||
+    ('ontouchstart' in window && window.innerWidth <= 1024);
+
+// --- Lenis Smooth Scroll (desktop only) ---
 const lenis = new Lenis({
     autoRaf: false,
-    lerp: 0.1,           // lower values = smoother but more "lag", 0.1 is a good responsive default
+    lerp: 0.1,
     wheelMultiplier: 1,
     touchMultiplier: 2,
     infinite: false,
 });
 
-// Sync Lenis → GSAP ScrollTrigger
-lenis.on('scroll', ScrollTrigger.update);
-gsap.ticker.add((time) => { lenis.raf(time * 1000); });
-gsap.ticker.lagSmoothing(0);
+// Only run Lenis on desktop
+if (!isMobile) {
+    // Sync Lenis → GSAP ScrollTrigger
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+}
 
-// Start paused — will activate after WebGL Phase 1 transition
-lenis.stop();
+// Start paused — will activate after WebGL Phase 1 transition (desktop only)
+// On mobile, Lenis stays permanently stopped so native scroll handles everything.
+if (!isMobile) {
+    lenis.stop();
+}
 
 /**
  * -------------------------------------------------------------------
@@ -541,12 +555,23 @@ const transitionToHomepage = () => {
 
     if (!nextSection) return;
 
-    // Remove the interceptor IMMEDIATELY
+    // Remove the wheel interceptor IMMEDIATELY
     window.removeEventListener('wheel', onWheelDuringWebGL);
+
+    // ─── CRITICAL FIX ───────────────────────────────────────────────
+    // On desktop: Start Lenis HERE, BEFORE the scroll tween, not inside onComplete.
+    // lenis.stop() puts overflow:hidden on <html> via .lenis-stopped which
+    // would block the scroll tween from working.
+    // On mobile: Lenis is never started — native scroll handles everything.
+    if (!isMobile) {
+        lenis.start();
+        // Give ScrollTrigger a tick to recalculate after Lenis activates
+        ScrollTrigger.refresh();
+    }
+    // ────────────────────────────────────────────────────────────────
 
     // Pre-hide tagline
     if (taglineText) gsap.set(taglineText, { opacity: 0, y: 30 });
-    // Note: .char-inner is already hidden by CSS (translateY(115%))
 
     // Smooth scroll to homepage
     gsap.to(window, {
@@ -559,9 +584,6 @@ const transitionToHomepage = () => {
                 webglCanvas.style.pointerEvents = 'none';
             }
 
-            // Start Lenis smooth scroll now that we're past WebGL phase
-            lenis.start();
-
             // Animate hero text in (Character Reveal)
             const tl = gsap.timeline();
 
@@ -569,7 +591,7 @@ const transitionToHomepage = () => {
                 tl.to(charInners, {
                     y: '0%',
                     duration: 1.0,
-                    stagger: 0.02, // Fast granular stagger
+                    stagger: 0.02,
                     ease: 'power4.out'
                 });
             }

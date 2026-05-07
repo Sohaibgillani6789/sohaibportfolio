@@ -30,10 +30,21 @@ body {
   width: 100%;
   scrollbar-width: none;
   overflow-x: clip;
-  overscroll-behavior: none; /* Prevents scroll elasticity bounce which causes jitter in Lenis */
   background-color: #040016;
   font-family: sans-serif;
-  overflow-y: auto
+  overflow-y: auto;
+  /* Always allow vertical pan gestures at the compositor layer.
+     A non-passive touchmove listener calling preventDefault() can
+     permanently block scroll even after it's removed without this. */
+  touch-action: pan-y;
+}
+
+/* Desktop only: prevent Lenis from getting double-bounced by OS rubber-banding */
+@media (min-width: 1025px) {
+  html,
+  body {
+    overscroll-behavior: none;
+  }
 }
 
 .webgl,

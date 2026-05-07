@@ -8,20 +8,28 @@ inject();
 
 gsap.registerPlugin(TextPlugin);
 
-// --- Lenis Smooth Scroll (starts immediately, no WebGL phase) ---
+// --- Mobile Detection ---
+const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) ||
+    ('ontouchstart' in window && window.innerWidth <= 1024);
+
+// --- Lenis Smooth Scroll (desktop only) ---
+// On mobile, native scroll is already hardware-accelerated and smooth.
+// Running Lenis on mobile intercepts touch events and causes scroll to freeze.
 const lenis = new Lenis({
     autoRaf: false,
-    lerp: 0.1,           // lower values = smoother but more "lag", 0.1 is a good responsive default
+    lerp: 0.1,
     wheelMultiplier: 1,
     touchMultiplier: 2,
     infinite: false,
 });
 
-// Use GSAP ticker instead of requestAnimationFrame for Lenis to ensure synchronized updates
-gsap.ticker.add((time) => {
-    lenis.raf(time * 1000);
-});
-gsap.ticker.lagSmoothing(0);
+// Use GSAP ticker for Lenis only on desktop
+if (!isMobile) {
+    gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+}
 
 // Prevent browser from restoring scroll position automatically which causes jumps/reloads
 if ('scrollRestoration' in history) {
